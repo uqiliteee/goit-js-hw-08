@@ -1,5 +1,5 @@
-import Player from '@vimeo/player';
 import throttle from 'lodash.throttle';
+import Player from '@vimeo/player';
 
 const iframe = document.querySelector('iframe');
 const player = new Player(iframe);
@@ -15,7 +15,7 @@ const savingData = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY));
 
 if (savingData) {
     player.setCurrentTime(savingData.seconds)
-        .then(function (seconds) {
+        .then(function () {
     
     }).catch(function (error) {
         switch (error.name) {
