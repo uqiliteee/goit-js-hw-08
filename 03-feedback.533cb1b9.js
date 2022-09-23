@@ -1,0 +1,2 @@
+const e=document.querySelector(".feedback-form");!function(){const e=localStorage.getItem("feedback-form-state");if(console.log(e),!saveData){const e=JSON.parse(t);console.log(e)}}(),e.addEventListener("input",o),e.addEventListener("submit",onFormSubmit);const t={},o=e=>{const{name:o,value:a}=e.target;t[o]=a,localStorage.setItem("feedback-form-state",t)};
+//# sourceMappingURL=03-feedback.533cb1b9.js.map
