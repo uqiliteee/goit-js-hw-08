@@ -23,35 +23,34 @@ const onFormSubmit = event => {
     const getData = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY));
     console.log(getData)
 
+
     localStorage.removeItem(LOCAL_STORAGE_KEY);
 };
 formRef.addEventListener('submit', throttle(onFormSubmit, 500));
 
 function savingData() {
-    const gettingData = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY));
+    const getData = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY));
+    // console.log(getData);
 
-    if (!gettingData) {
+    if (getData === null) {
         return
-    };
-
-    try {
-        Object.entries(gettingData).forEach(([name, value]) => {
-            formRef.elements[name].value = value;
-        })
-    } catch (error) {
-        console.log(error)
     }
+    // try {
+    //     Object.entries(gettingData).forEach(([name, value]) => {
+    //         formRef.elements[name].value = value;
+    //     })
+    // } catch (error) {
+    //     console.log(error)
+    // }
 
-    // if (gettingData.email) {
-    //     console.log(inputRef.value = savingData.email)
-    //     console.log(formData['email'] = inputRef.value)
-    //     console.log(localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(formData)))
-    // };
-    // if (gettingData.message) {
-    //     console.log(textareaRef.value = savingData.message)
-    //     console.log(formData['message'] = textareaRef.value)
-    //     console.log(localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(formData)))
-    // };
+    if (getData.email) {
+        inputRef.value = getData.email
+        formData['email'] = inputRef.value
+    };
+    if (getData.message) {
+        textareaRef.value = getData.message
+        formData['message'] = textareaRef.value
+    };
 
 }
 
