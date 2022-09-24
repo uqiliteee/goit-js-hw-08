@@ -28,22 +28,30 @@ const onFormSubmit = event => {
 formRef.addEventListener('submit', throttle(onFormSubmit, 500));
 
 function savingData() {
-    const getData = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY));
+    const gettingData = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY));
 
-    if (getData === null) {
+    if (!gettingData) {
         return
     };
 
-    if (getData.email) {
-        inputRef.value = savingData.email;
-        formData['email'] = inputRef.value;
-        localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(formData));
-    };
-    if (getData.message) {
-        textareaRef.value = savingData.message;
-        formData['message'] = textareaRef.value;
-        localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(formData));
-    };
+    try {
+        Object.entries(gettingData).forEach(([name, value]) => {
+            formRef.elements[name].value = value;
+        })
+    } catch (error) {
+        console.log(error)
+    }
+
+    // if (gettingData.email) {
+    //     console.log(inputRef.value = savingData.email)
+    //     console.log(formData['email'] = inputRef.value)
+    //     console.log(localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(formData)))
+    // };
+    // if (gettingData.message) {
+    //     console.log(textareaRef.value = savingData.message)
+    //     console.log(formData['message'] = textareaRef.value)
+    //     console.log(localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(formData)))
+    // };
 
 }
 
